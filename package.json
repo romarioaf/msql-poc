@@ -5,12 +5,14 @@
   "main": "loader-microservices.js",
   "scripts": {
     "services": "nodemon",
-    "requests": "nodejs client/test.js"
+    "register": "nodejs client/test.js",
+    "unregister" : "nodejs client/unregister-teste.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "redis": "^2.7.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
