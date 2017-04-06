@@ -22,8 +22,10 @@ module.exports = (req, resp, next) => {
 		});
     } else if (unregister) {
     	console.log("UNREGISTER");
+    	console.log(unregister);
     	
-    	client.del('${req.headers.host}:${req.path}:${register}', function(err, data) {
+    	client.del(`${req.headers.host}:${req.path}:${unregister}`, function(err, data) {
+    		console.log(`${req.headers.host}:${req.path}:${unregister}`);
 		    console.log(data);
 		});
     }

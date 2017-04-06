@@ -5,8 +5,9 @@
   "main": "loader-microservices.js",
   "scripts": {
     "services": "nodemon",
-    "register": "nodejs client/test.js",
-    "unregister" : "nodejs client/unregister-teste.js"
+    "register": "nodejs client/register-test.js",
+    "unregister" : "nodejs client/unregister-test.js",
+    "api" : "nodejs api/index.js"
   },
   "author": "",
   "license": "ISC",
