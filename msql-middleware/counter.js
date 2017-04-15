@@ -26,11 +26,8 @@ module.exports = (client, req, resp) => {
 			});
 
 		  } else {
-		  	console.log("-------------------------------------");
-		  	console.log("Serviço ainda não está sendo monitorado");
-		  	console.log("-------------------------------------");
 
-		  	//REGISTRAR SERVIÇOS PARA SEREM MONITORADOS
+		  	//REGISTRAR SERVIÇO PARA SER MONITORADOS
 		  	if(register) {
 		    	client.set(`${req.headers.host}:${req.path}:${register}`, 0, function(err, data) {
 				  console.log("-------------------------------------");
