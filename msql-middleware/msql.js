@@ -1,8 +1,11 @@
-const redis = require("redis")
-const client = redis.createClient('6379', '127.0.0.1')
+const client = require("./redisClient.js")();
 const requestCount = require("./counter.js");
+const registerErrorHandler = require("./registerErrorHandler.js");
 
 module.exports = (req, resp, next) => {
+
+	var initialTimer = new Date();
+	var totalTimer = null;
 
 	client.on('connect', function() {
 	    console.log('connected');
@@ -12,7 +15,8 @@ module.exports = (req, resp, next) => {
 	    console.log("Error " + err);
 	});
 
-    requestCount(client, req, resp)
-    
+	registerErrorHandler(client, req, resp)
+	requestCount(client, req, resp)
+
     next()
 }

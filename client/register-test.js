@@ -14,7 +14,6 @@ const registerOption2 = Object.assign({}, options1, registerHeaderErrorCounter)
 http.request(registerOptions1, (res) => console.log('register ok')).end()
 
 
-
 const registerOptions3 = Object.assign({}, options2, registerHeaderCounter) 
 http.request(registerOptions3, (res) => console.log('register ok')).end()
 
