@@ -12,11 +12,8 @@ module.exports = (client, req, resp) => {
 
 		//VERIFICANDO SE SERVIÇO CONTÉM COMANDO COUNT
 	    client.get(`${req.headers.host}:${req.path}:COUNT`, function(err, data) {
-		  //console.log(`Verificando se serviço ${req.headers.host}${req.path} foi registrado`);
+		  
 		  if (data) {
-		  	/*console.log("-------------------------------------");
-		  	console.log("Serviço já está sendo monitorado");
-		  	console.log("-------------------------------------");*/
 		  	
 		  	console.log(`incr(${req.headers.host}:${req.path}:COUNT)`);
 
@@ -26,14 +23,14 @@ module.exports = (client, req, resp) => {
 
 		  } else {
 
-		  	//REGISTRAR SERVIÇO PARA SER MONITORADOS
+		  	//REGISTRAR SERVIÇO PARA SER MONITORADO
 		  	if(register == "COUNT") {
 
 		  		console.log(`set(${req.headers.host}:${req.path}:COUNT)`);
 
 		    	client.set(`${req.headers.host}:${req.path}:${register}`, 0, function(err, data) {
 				  console.log("-------------------------------------");
-				  console.log("Registrado");
+				  console.log("Registrado" + new Date().getTime());
 				  console.log("-------------------------------------");
 				});
 		    }

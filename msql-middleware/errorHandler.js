@@ -1,5 +1,4 @@
-const redis = require("redis")
-const client = redis.createClient('6379', '127.0.0.1')
+const client = require("./redisClient.js")();
 
 module.exports = (err, req, resp, next) => {
 

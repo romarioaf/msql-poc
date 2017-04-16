@@ -16,8 +16,7 @@ module.exports = (client, req, resp) => {
 		  
 			if (!data) {
 
-
-			  	if(register) {
+			  	if(register == "ERROR-COUNTER") {
 					console.log(`set(${req.headers.host}:${req.path}:COUNT)`);
 			    	
 			    	client.set(`${req.headers.host}:${req.path}:${register}`, 0, function(err, data) {
