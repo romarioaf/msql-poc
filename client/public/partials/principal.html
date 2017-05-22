@@ -1,0 +1,25 @@
+<div class="jumbotron">
+    <h1 class="text-center">Alurapic</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form>
+        	<div class="input-group-btn">
+	        	<span class="input-group-btn">
+	        		<a href="#/microservico/new" class="btn btn-primary">Novo Microserviço</a>
+	        	</span>
+        	</div>
+            <input ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" type="" name="" placeholder="Filtrar">
+        </form>
+    </div> <!-- Fim col-md-12-->
+</div><!-- Fim row-->
+
+<div class="row">
+    <painel ng-repeat="micro in microservices | filter: filtro" nome="{{micro.nome}}" class="col-md-2 painel-animado">
+        <ul>
+            <li>Servidor: {{micro.servidor}}
+            <li>Porta: {{micro.porta}}
+        </ul>
+    </painel>
+</div>

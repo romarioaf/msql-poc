@@ -1,0 +1,45 @@
+<div class="page-header text-center">
+    <h1>{{micro.nome}}</h1>
+</div>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Nome</label>
+            <input ng-model="micro.nome" name="nome" class="form-control" required ng-maxlength="20"> 
+			<span ng-show="formulario.$submitted && formulario.nome.$error.required" class="form-control alert-danger">
+				Nome obrigatório
+			</span>               
+        </div>
+        <div class="form-group">
+            <label>servidor</label>
+            <input ng-model="micro.servidor" name="servidor" class="form-control" required ng-maxlength="20"> 
+            <span ng-show="formulario.$submitted && formulario.servidor.$error.required" class="form-control alert-danger">
+                servidor obrigatório
+            </span>               
+        </div>
+        <div class="form-group">
+            <label>Porta</label>
+            <input ng-model="micro.porta" name="porta" class="form-control" required ng-maxlength="4"> 
+            <span ng-show="formulario.$submitted && formulario.porta.$error.required" class="form-control alert-danger">
+                Porta é obrigatório
+            </span>               
+        </div>
+       <!--  <div class="form-group">
+            <label>Path</label>
+            <input ng-model="micro.path" name="path" class="form-control" required> 
+            <span ng-show="formulario.$submitted && formulario.path.$error.required" class="form-control alert-danger">
+                Path é obrigatório
+            </span>               
+        </div>   -->      
+
+        <button type="submit" class="btn btn-primary">
+            Salvar
+        </button>
+         <a href="/" class="btn btn-primary" meu-focus>Voltar</a>
+        <hr>
+    </div>
+    
+</form>
