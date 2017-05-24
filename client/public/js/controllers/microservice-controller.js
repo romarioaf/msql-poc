@@ -6,8 +6,6 @@ angular.module('msqlpoc').controller('MicroserviceController',
 
 	$scope.submeter = function () {
 
-		console.log("coisa");
-
 		if($scope.formulario.$valid) {
 
 			if ($scope.micro._id) {

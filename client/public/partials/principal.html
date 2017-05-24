@@ -1,5 +1,5 @@
 <div class="jumbotron">
-    <h1 class="text-center">Alurapic</h1>
+    <h1 class="text-center">Msql-POC</h1>
 </div>
 
 <div class="row">
@@ -16,10 +16,20 @@
 </div><!-- Fim row-->
 
 <div class="row">
-    <painel ng-repeat="micro in microservices | filter: filtro" nome="{{micro.nome}}" class="col-md-2 painel-animado">
+    <painel ng-repeat="micro in microservices | filter: filtro" nome="{{micro.nome}}" class="col-md-3 painel-animado">
         <ul>
-            <li>Servidor: {{micro.servidor}}
-            <li>Porta: {{micro.porta}}
+            <li><b>Servidor:</b> {{micro.ip_servidor}}
+            <li><b>Porta:</b> {{micro.porta}}
         </ul>
+        
+        <div class="row">
+            <button ng-click="contarRequisicoes(micro)" class="btn btn-primary btn-block col-md-12">Contar Requisições</button>
+        </div>
+        <div class="row">
+            <button ng-click="contarErros(micro)" class="btn btn-danger btn-block col-md-12">Contar Erros</button>
+        </div>
+        <div class="row">
+            <button ng-click="verificarMemoria(micro)" class="btn btn-warning btn-block col-md-12">Verificar Memória</button>
+        </div>
     </painel>
 </div>
