@@ -20,16 +20,21 @@
         <ul>
             <li><b>Servidor:</b> {{micro.ip_servidor}}
             <li><b>Porta:</b> {{micro.porta}}
+            <li><b>Path:</b> {{micro.path}}
         </ul>
-        
         <div class="row">
             <button ng-click="contarRequisicoes(micro)" class="btn btn-primary btn-block col-md-12">Contar Requisições</button>
         </div>
         <div class="row">
-            <button ng-click="contarErros(micro)" class="btn btn-danger btn-block col-md-12">Contar Erros</button>
+            <button ng-click="contarErros(micro)" class="btn btn-danger btn-block col-md-12">
+                <i class="fa-exclamation-circle"></i>Contar Erros
+            </button>
         </div>
         <div class="row">
-            <button ng-click="verificarMemoria(micro)" class="btn btn-warning btn-block col-md-12">Verificar Memória</button>
+            <button ng-click="consumoMemoria(micro)" class="btn btn-warning btn-block col-md-12">Verificar Memória</button>
+        </div>
+        <div class="row">
+            <a href="/#/estatistica" class="btn btn-primary" meu-focus>Estatística</a>
         </div>
     </painel>
 </div>
