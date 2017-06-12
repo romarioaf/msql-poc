@@ -1,5 +1,23 @@
-<div ng-controller="EstatisticaController">
-	<canvas id="doughnut" class="chart chart-doughnut" chart-data="data" 
-	chart-labels="labels" height="20" width="60">
-	</canvas> 
+<div class="jumbotron">
+    <h1 class="text-center">Estatísticas</h1>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h4>Quantidade de Requisições:</h4>
+		 <h4>{{contadorRequisicao}}</h4>
+	</div>
+	<div class="col-md-6">
+		<h4>Quantidade de Erros:</h4> 
+		<h4>{{contadorErros}}</h4>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h4>Uso de Memória:</h4>
+		<div ng-controller="EstatisticaController">
+			<canvas id="doughnut" class="chart chart-doughnut" chart-data="data" 
+			chart-labels="labels" height="20" width="60">
+			</canvas> 
+		</div>
+	</div>
 </div>

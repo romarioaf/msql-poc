@@ -15,6 +15,8 @@
     </div> <!-- Fim col-md-12-->
 </div><!-- Fim row-->
 
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
 <div class="row">
     <painel ng-repeat="micro in microservices | filter: filtro" nome="{{micro.nome}}" class="col-md-3 painel-animado">
         <ul>
@@ -23,18 +25,18 @@
             <li><b>Path:</b> {{micro.path}}
         </ul>
         <div class="row">
-            <button ng-click="contarRequisicoes(micro)" class="btn btn-primary btn-block col-md-12">Contar Requisições</button>
+            <button ng-click="contarRequisicoes(micro)" class="btn btn-primary col-md-12">Contar Requisições</button>
         </div>
         <div class="row">
-            <button ng-click="contarErros(micro)" class="btn btn-danger btn-block col-md-12">
+            <button ng-click="contarErros(micro)" class="btn btn-danger col-md-12">
                Contar Erros
             </button>
         </div>
         <div class="row">
-            <button ng-click="consumoMemoria(micro)" class="btn btn-warning btn-block col-md-12">Verificar Memória</button>
+            <button ng-click="consumoMemoria(micro)" class="btn btn-warning col-md-12">Verificar Memória</button>
         </div>
         <div class="row">
-            <a href="/#/estatistica" class="btn btn-primary" meu-focus>Estatística</a>
+            <a ng-click="obterEstatisticas(micro)" href="/#/estatistica" class="btn btn-primary" meu-focus>Estatística</a>
         </div>
     </painel>
 </div>
