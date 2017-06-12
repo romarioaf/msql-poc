@@ -43,7 +43,7 @@ module.exports = function (app) {
       });
   });
 
-  app.get('/api/msqlinfo/count', (req, resp) => {
+  app.get('/api/microservice/count', (req, resp) => {
 
       client.get(`${req.query.host}:${req.query.port}:${req.query.path}:COUNT`, function(err, data) {
         console.log(`${req.query.host}:${req.query.port}:${req.query.path}:COUNT`);
@@ -52,7 +52,7 @@ module.exports = function (app) {
       });
   })
 
-  app.get('/api/msqlinfo/errorcount', (req, resp) => {
+  app.get('/api/microservice/errorcount', (req, resp) => {
      
       client.get(`${req.query.host}:${req.query.port}:${req.query.path}:ERROR-COUNTER`, function(err, data) {
         console.log(`${req.query.host}${req.query.port}:${req.query.path}:ERROR-COUNTER`);
@@ -61,14 +61,17 @@ module.exports = function (app) {
       });
   })
 
-  app.get('/api/msqlinfo/memoryusage', (req, resp) => {
+  app.get('/api/microservice/memoryusage', (req, resp) => {
      
       client.get(`${req.query.host}:${req.query.port}:${req.query.path}:MEMORY-USAGE`, function(err, data) {
-        console.log(`${req.query.host}${req.query.port}:${req.query.path}:MEMORY-USAGE`);
+        console.log(`${req.query.host}:${req.query.port}:${req.query.path}:MEMORY-USAGE`);
 
         if(data) {
           console.log(JSON.parse(data));
           resp.send(JSON.parse(data))
+        } else {
+          console.log(err);
+          resp.send(JSON.parse(err))
         }
       });
   })
