@@ -1,16 +1,27 @@
-angular.module('msqlpoc').controller('MicroserviceController', 
-	function ($scope, $http, $routeParams) {
+angular.module('msqlpoc').controller('MicroserviceController',
+	function ($scope, $http, $routeParams, apiMicroservice) {
 	
 	$scope.micro = {};
 	$scope.mensagem = '';
+
+	if ($routeParams.microId) {
+		$http.get(apiMicroservice + '/' + $routeParams.microId)
+		.success(function (micro) {
+			$scope.micro = micro;
+			console.log($scope.micro);
+		})
+		.error(function (error) {
+			
+		});
+	}
 
 	$scope.submeter = function () {
 
 		if($scope.formulario.$valid) {
 
-			if ($scope.micro._id) {
+			if ($scope.micro.id) {
 
-				$http.put('http://localhost:8085/api/microservice' + $scope.micro._id, $scope.micro)
+				$http.put(apiMicroservice, $scope.micro)
 				.success(function () {
 					$scope.mensagem = 'Microserviço Alterado com sucesso';
 				})
@@ -19,7 +30,7 @@ angular.module('msqlpoc').controller('MicroserviceController',
 				});
 
 			} else {
-				$http.post('http://localhost:8085/api/microservice', $scope.micro)
+				$http.post(apiMicroservice, $scope.micro)
 				.success(function () {
 					$scope.mensagem = 'Microserviço incluído com sucesso';
 				})

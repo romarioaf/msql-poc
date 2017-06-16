@@ -1,4 +1,4 @@
-angular.module('msqlpoc',['ngRoute', 'minhasDiretivas', 'chart.js'])
+angular.module('msqlpoc',['ngRoute', 'minhasDiretivas', 'minhasContantes', 'chart.js'])
 .config(function ($routeProvider, $httpProvider) {
 
 	$httpProvider.defaults.useXDomain = true;
@@ -19,6 +19,14 @@ angular.module('msqlpoc',['ngRoute', 'minhasDiretivas', 'chart.js'])
 		controller: 'EstatisticaController'
 	});
 
+	$routeProvider.when('/microservico/edit/:microId', {
+		templateUrl: 'partials/microservice.html',
+		controller: 'MicroserviceController'
+	});
+
 	$routeProvider.otherwise({redirectTo: '/microservico'});
 
 });
+
+angular.module("minhasContantes", [])
+.constant('apiMicroservice', 'http://127.0.0.1:8085/api/microservice');

@@ -1,4 +1,5 @@
-angular.module('msqlpoc').service('CompartilharDadosService', function() {
+angular.module('msqlpoc')
+.service('CompartilharDadosService', function() {
     var microservice = {};
 
     var setMicro = function(micro) {
@@ -15,3 +16,5 @@ angular.module('msqlpoc').service('CompartilharDadosService', function() {
         getMicro: getMicro
     };
 });
+
+

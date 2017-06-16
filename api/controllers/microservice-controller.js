@@ -13,7 +13,7 @@ module.exports = function (app) {
       next();
   });
 
-  app.post('/api/microservice', function(req, res) {
+  app.post('/api/microservice', (req, res) => {
       var microservice = req.body;
       var connection = connectionFactory();
       var microserviceRepository = repository();
@@ -26,10 +26,26 @@ module.exports = function (app) {
           res.status(201).json(resultado);
         }
       });
-
   });
 
-  app.get('/api/microservice', function (req, res) {
+  app.put('/api/microservice', (req, res) => {
+      var microservice = req.body;
+      var connection = connectionFactory();
+      var microserviceRepository = repository();
+
+      console.log(microservice);
+
+      new microserviceRepository(connection).atualiza(microservice, function (error,  resultado) {
+        if (error) {
+          console.log(error);
+          res.status('400').send(error);
+        } else {
+          res.status(201).json(resultado);
+        }
+      });
+  });
+
+  app.get('/api/microservice', (req, res) => {
     var microservice = req.body;
     var connection = connectionFactory();
     var microserviceRepository = repository();
@@ -38,19 +54,21 @@ module.exports = function (app) {
         if (error) {
           res.status(400).json(error);
         } else {
-          res.status(201).json(resultado);
+          res.status(200).json(resultado);
         }
       });
   });
 
   app.get('/api/microservice/count', (req, resp) => {
 
+    console.log(req.query.host);
+
       client.get(`${req.query.host}:${req.query.port}:${req.query.path}:COUNT`, function(err, data) {
         console.log(`${req.query.host}:${req.query.port}:${req.query.path}:COUNT`);
         console.log(data);
         resp.send(data)
       });
-  })
+  });
 
   app.get('/api/microservice/errorcount', (req, resp) => {
      
@@ -59,7 +77,7 @@ module.exports = function (app) {
         console.log(data);
         resp.send(data)
       });
-  })
+  });
 
   app.get('/api/microservice/memoryusage', (req, resp) => {
      
@@ -74,9 +92,21 @@ module.exports = function (app) {
           resp.send(JSON.parse(err))
         }
       });
-  })
+  });
 
+  app.get('/api/microservice/:id', (req, res) => {
+    var microservice = req.body;
+    var connection = connectionFactory();
+    var microserviceRepository = repository();
+
+    new microserviceRepository(connection).buscaPorId(req.params.id, function (error,  resultado) {
+        if (error) {
+          res.status(400).json(error);
+        } else {
+          res.status(200).json(resultado[0]);
+        }
+      });
+  });
 
   return app;
-
 }

@@ -8,7 +8,8 @@ MicroserviceRepository.prototype.salva = function (microservice, callback) {
 }
 
 MicroserviceRepository.prototype.atualiza = function (microservice, callback) {
-	this._connection.query('update microservice set status = ? where id = ?', [microservice.status, microservice.id], callback);
+	this._connection.query('update microservice set nome = ?, ip_servidor = ?, porta = ?, path = ? where id = ?', 
+		[microservice.nome, microservice.ip_servidor, microservice.porta, microservice.path, microservice.id], callback);
 }
 
 MicroserviceRepository.prototype.lista = function (callback) {
