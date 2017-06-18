@@ -24,6 +24,30 @@ MicroserviceRepository.prototype.delete = function(Microservice, callback) {
 	this._connection.query('delete from microservice where id = ?', [microservice.id], callback);
 }
 
+MicroserviceRepository.prototype.registraCount = function (id, callback) {
+	this._connection.query('update microservice set status_count = "REGISTER" where id = ?', [id], callback);
+}
+
+MicroserviceRepository.prototype.desregistraCount = function (id, callback) {
+	this._connection.query('update microservice set status_count = "UNREGISTER" where id = ?', [id], callback);
+}
+
+MicroserviceRepository.prototype.registraMemoryUsage = function (id, callback) {
+	this._connection.query('update microservice set status_memory_usage = "REGISTER" where id = ?', [id], callback);
+}
+
+MicroserviceRepository.prototype.desregistraMemoryUsage = function (id, callback) {
+	this._connection.query('update microservice set status_memory_usage = "UNREGISTER" where id = ?', [id], callback);
+}
+
+MicroserviceRepository.prototype.registraCountError = function (id, callback) {
+	this._connection.query('update microservice set status_count_error = "REGISTER" where id = ?', [id], callback);
+}
+
+MicroserviceRepository.prototype.desregistraCountError = function (id, callback) {
+	this._connection.query('update microservice set status_count_error = "UNREGISTER" where id = ?', [id], callback);
+}
+
 module.exports = function () {
 	return MicroserviceRepository;
 }
