@@ -95,7 +95,6 @@ module.exports = function (app) {
   });
 
   app.get('/api/microservice/:id', (req, res) => {
-    var microservice = req.body;
     var connection = connectionFactory();
     var microserviceRepository = repository();
 
@@ -104,6 +103,36 @@ module.exports = function (app) {
           res.status(400).json(error);
         } else {
           res.status(200).json(resultado[0]);
+        }
+      });
+  });
+
+  app.put('/api/microservice/:id/registraCount', (req, res) => {
+    var connection = connectionFactory();
+    var microserviceRepository = repository();
+
+    console.info(req.params.id);
+
+    new microserviceRepository(connection).registraCount(req.params.id, function (error,  resultado) {
+        if (error) {
+          res.status(400).json(error);
+        } else {
+          res.status(200).json(resultado);
+        }
+      });
+  });
+
+  app.put('/api/microservice/:id/desregistraCount', (req, res) => {
+    var connection = connectionFactory();
+    var microserviceRepository = repository();
+
+    console.log(req.params.id, "sdfa");
+
+    new microserviceRepository(connection).desregistraCount(req.params.id, function (error,  resultado) {
+        if (error) {
+          res.status(400).json(error);
+        } else {
+          res.status(200).json(resultado);
         }
       });
   });

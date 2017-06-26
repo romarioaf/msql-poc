@@ -5,9 +5,6 @@ const memoryUsage = require("./memoryUsage.js");
 
 module.exports = (req, resp, next) => {
 
-	var initialTimer = new Date();
-	var totalTimer = null;
-
 	client.on('connect', function() {
 	    console.log('connected');
 	});
@@ -16,9 +13,11 @@ module.exports = (req, resp, next) => {
 	    console.log("Error " + err);
 	});
 
-	registerErrorHandler(client, req, resp)
-	requestCount(client, req, resp)
-	memoryUsage(client, req, resp);
+	if (req.method != "OPTIONS") {
+		registerErrorHandler(client, req, resp)
+		requestCount(client, req, resp)
+		memoryUsage(client, req, resp);
+	}
 
     next()
 }

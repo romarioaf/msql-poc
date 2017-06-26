@@ -5,8 +5,8 @@ const unregisterHeaderErrorCounter = { headers: { 'MSQL-UNREGISTER': 'ERROR-COUN
 const registerMemoryUsage = { headers: { 'MSQL-UNREGISTER': 'MEMORY-USAGE' } }
 
 
-const options1 = { host: 'localhost', port: 8081, path: '/micro1' }
-const options2 = { host: 'localhost', port: 8082, path: '/micro2' }
+const options1 = { host: '127.0.0.1', port: 8081, path: '/micro1' }
+const options2 = { host: '127.0.0.1', port: 8082, path: '/micro2' }
 
 const unregisterOptions1 = Object.assign({}, options1, unregisterHeaderCounter)
 http.request(unregisterOptions1, (res) => console.log('unregister ok')).end()

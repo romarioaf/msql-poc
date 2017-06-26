@@ -1,4 +1,5 @@
-angular.module('msqlpoc',['ngRoute', 'minhasDiretivas', 'minhasContantes', 'chart.js'])
+angular.module('msqlpoc',['ngRoute', 'minhasDiretivas', 'minhasContantes', 'chart.js', 
+	'ui.bootstrap'])
 .config(function ($routeProvider, $httpProvider) {
 
 	$httpProvider.defaults.useXDomain = true;
@@ -24,7 +25,8 @@ angular.module('msqlpoc',['ngRoute', 'minhasDiretivas', 'minhasContantes', 'char
 		controller: 'MicroserviceController'
 	});
 
-	$routeProvider.otherwise({redirectTo: '/microservico'});
+	//$routeProvider.otherwise({redirectTo: '/microservico'});
+	$routeProvider.otherwise({ redirectTo: '/microservico' });
 
 });
 

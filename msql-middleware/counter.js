@@ -3,9 +3,13 @@ module.exports = (client, req, resp) => {
 	const register = req.get('MSQL-REGISTER')
     const unregister = req.get('MSQL-UNREGISTER')
 
+    console.log("requisicao:", req.method);
+    console.log('MSQL-REGISTER', register);
+    console.log('MSQL-UNREGISTER', unregister);
+
     if (unregister == "COUNT") {
 		client.del(`${req.headers.host}:${req.path}:${unregister}`, function(err, data) {
-			console.log(`${req.headers.host}:${req.path}:${unregister}`);
+			console.log(`DELETANDO: ${req.headers.host}:${req.path}:${unregister}`);
 		    console.log(data);
 		});
 	} else {
@@ -18,7 +22,7 @@ module.exports = (client, req, resp) => {
 		  	console.log(`incr(${req.headers.host}:${req.path}:COUNT)`);
 
 		  	client.incr(`${req.headers.host}:${req.path}:COUNT`, function(err, data) {
-			  console.log("Incrementado...");
+			  console.log("INCREMENTADO...");
 			});
 
 		  } else {

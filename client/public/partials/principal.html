@@ -25,15 +25,30 @@
             <li><b>Servidor:</b> {{micro.ip_servidor}}
             <li><b>Porta:</b> {{micro.porta}}
             <li><b>Path:</b> {{micro.path}}
+            <li><b>StatusCount:</b> {{micro.status_count}}
         </ul>
-        <div class="row">
+       <!--  <div class="row">
             <a href="#/microservico/edit/{{micro.id}}" class="btn btn-link col-md-12">Editar</a>
             <a ng-click="obterEstatisticas(micro)" href="/#/estatistica" class="btn btn-info col-md-12">Estatística</a>
+        </div> -->
+
+        <div class="btn-group" uib-dropdown is-open="status.isopen">
+          <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            Ações <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem"><a href="#/microservico/edit/{{micro.id}}">Editar</a></li>
+            <li role="menuitem"><a href="/#/deletar">Deletar</a></li>
+            <li role="menuitem"><a ng-click="obterEstatisticas(micro)" href="/#/estatistica">Estatística</a></li>
+          </ul>
         </div>
+
         <div class="espacamentoTop">
             <div class="row">
-                <button ng-click="contarRequisicoes(micro)" class="btn btn-primary col-md-12">
-                Contar Requisições</button>
+                <button ng-show="{{micro.countRegistrado}}" ng-click="desregistraContarRequisicoes(micro)" class="btn btn-primary col-md-12">
+                    Desregistrar Contador</button>
+                <button ng-show="{{!micro.countRegistrado}}" ng-click="registraContarRequisicoes(micro)" class="btn btn-primary col-md-12">
+                    Registrar Contador</button>
             </div>
             <div class="row">
                 <button ng-click="contarErros(micro)" class="btn btn-danger col-md-12">Contar Erros</button>
