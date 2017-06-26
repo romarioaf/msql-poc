@@ -17,7 +17,8 @@ angular.module('msqlpoc').controller('EstatisticaController',
 
 	$http({method: 'GET', url: apiMicroservice+"/count", params: {host: micro.ip_servidor, port: micro.porta, path: micro.path}})
 	.success(function (dado) {
-		$scope.contadorRequisicao = dado;
+		if (dado)
+			$scope.contadorRequisicao = dado;
 	})
 	.error(function (error) {
 		console.error(error);
@@ -25,7 +26,8 @@ angular.module('msqlpoc').controller('EstatisticaController',
 
 	$http({method: 'GET', url: apiMicroservice+"/errorcount", params: {host: micro.ip_servidor, port: micro.porta, path: micro.path}})
 	.success(function (dado) {
-		$scope.contadorErros = dado;
+		if (dado)
+			$scope.contadorErros = dado;
 	})
 	.error(function (error) {
 		console.error(error);

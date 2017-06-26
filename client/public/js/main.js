@@ -25,6 +25,12 @@ angular.module('msqlpoc',['ngRoute', 'minhasDiretivas', 'minhasContantes', 'char
 		controller: 'MicroserviceController'
 	});
 
+
+	$routeProvider.when('/microservico/dashboard', {
+		templateUrl: 'partials/dashboard.html',
+		controller: 'MicroserviceController'
+	});
+
 	//$routeProvider.otherwise({redirectTo: '/microservico'});
 	$routeProvider.otherwise({ redirectTo: '/microservico' });
 
