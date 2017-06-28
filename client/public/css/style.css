@@ -194,3 +194,7 @@ a:hover {
 .espacamentoTop {
 	margin-top: 10px; 
 }
+
+ul {
+  list-style-type: none;
+}
