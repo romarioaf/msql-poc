@@ -54,7 +54,7 @@
     </painel> -->
 
     <div class="col-lg-6 col-md-12" ng-repeat="micro in microservices | filter: filtro" nome="{{micro.nome}}" >
-        <div class="panel panel-default">
+        <div class="panel panel-default"  ><!--style="background-color: #ddd; color: #337ab7"-->
             <div class="panel-heading">
                 <div class="panel-title huge">{{micro.nome}}</div>
                 <div class="row">
@@ -73,19 +73,26 @@
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <!-- <span class="pull-left">Ver Detalhes</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div> -->
                     <div class="btn-group" uib-dropdown is-open="status.isopen">
-          <button id="single-button" type="button" class="btn btn-dafault" uib-dropdown-toggle ng-disabled="disabled">
-            Ações <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-            <li role="menuitem"><a href="#/microservico/edit/{{micro.id}}">Editar</a></li>
-            <li role="menuitem"><a href="/#/deletar">Deletar</a></li>
-            <li role="menuitem"><a ng-click="obterEstatisticas(micro)" href="/#/estatistica">Estatística</a></li>
-          </ul>
-        </div>
+                      <button id="single-button" type="button" class="btn btn-dafault" uib-dropdown-toggle ng-disabled="disabled">
+                        Ações <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li role="menuitem"><a href="#/microservico/edit/{{micro.id}}">Editar</a></li>
+                        <li role="menuitem"><a href="/#/deletar">Deletar</a></li>
+                        <li role="menuitem"><a ng-click="obterEstatisticas(micro)" href="/#/estatistica">Estatística</a></li>
+                      </ul>
+                    </div>
+
+                    <a href="#" class="btn btn-default" ng-click="desregistraContarRequisicoes(micro)">Registrar <i class="fa fa-level-up fa-5x" aria-hidden="true"></i></a>
+
+                    <button ng-show="{{micro.countRegistrado}}" ng-click="desregistraContarRequisicoes(micro)" class="btn btn-primary col-md-12">
+                    <i class="fa fa-level-up" aria-hidden="true"></i></button>
+                    <button ng-show="{{!micro.countRegistrado}}" ng-click="registraContarRequisicoes(micro)" class="btn btn-primary col-md-12">
+                        Registrar Contador</button>
+
+                    <i class="fa fa-level-up" aria-hidden="true"></i>
+                    <i class="fa fa-bug" aria-hidden="true"></i>
                 </div>
             </a>
         </div>
